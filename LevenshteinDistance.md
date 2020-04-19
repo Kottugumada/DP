@@ -21,8 +21,8 @@ Substrings would be in increasing size of the string
 
 #### Edit distance
 ##### Longest Common Subsequence e.g.
-    HIEROGLYPHOLOGY
-	MICHAELANGELO
+    hieroglyphology
+	michaelangelo
 
 **Step 1:** Define Subproblem:
 Edit distance on two different substrings 
@@ -43,15 +43,31 @@ DP(i,j) = MIN(
 	*3. (Cost of replace x[i] -> y[i]) + DP(i+1,j+1)
 	)
 
+	Insert delete or replace, whichever is cheaper
+
 **Step 4:** Topological ordering
 for(i: x....0)
 	for(j: y....0)
 
 Each cell is a node in the dp matrix and we check the adjacent cells
-Bottom up in a DAG, Weight of an edge is teh cost of an operation	
+Bottom up in a DAG, Weight of an edge is the cost of an operation	
 
 
 **Step 5:** Original problem:
 DP(0,0) that is the upper left top corner in the DAG
-![DP matrix](https://i.imgur.com/pW7LRAR.png)
+
+<table>
+	<tr>
+		<td>Current Cell (i,j)</td>
+		<td>Insert(i,j+1)</td>
+	</tr>
+	<tr>
+		<td>Delete(i+1,j)</td>
+		<td>Replace(i+1,j+1)</td>
+	</tr>
+</table>
+
+
+
+![DP](https://i.imgur.com/bQjsf1J.png)
 	
