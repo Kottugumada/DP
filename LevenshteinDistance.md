@@ -17,7 +17,7 @@ Substrings would be in increasing size of the string
 **Step 1:** Define Subproblem:
 Edit distance on two different substrings 
 x[i:] and another string y[j:]
-So, number of subproblems becomes length of x times length of y. All teh characters of x times all the characters of y.
+So, number of subproblems becomes length of x times length of y. All the characters of x times all the characters of y.
 Quadratic time O(n^2)
 
 **Step 2:** Guess the smallest part of the solution that can be solved in polynomial time
