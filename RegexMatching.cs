@@ -56,7 +56,6 @@ namespace DP
                     }
                 }
             }
-
             return dp[s.Length][p.Length];
         }
     }

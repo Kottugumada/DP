@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DP
 {
-    public class MinPathSum
-    {
-        public class Solution
+        public class MinimumPathSum
         {
             /// <summary>
             /// https://leetcode.com/problems/minimum-path-sum/
@@ -49,62 +46,5 @@ namespace DP
                 }
                 return dp[grid.Length - 1, grid[0].Length - 1];
             }
-            /// <summary>
-            /// https://leetcode.com/problems/min-cost-climbing-stairs
-            /// the final cost f[i] to climb the staircase from some step i is f[i] = cost[i] + min(f[i+1], f[i+2]). 
-            /// This motivates dynamic programming.
-            /// </summary>
-            /// <param name="cost"></param>
-            /// <returns></returns>
-            public int MinCostClimbingStairs(int[] cost)
-            {
-                int n = cost.Length;
-                if (n==0)
-                {
-                    return 0;
-                }
-                if (n == 1)
-                {
-                    return cost[1];
-                }
-                int[] dp = new int[n];
-                dp[0] = cost[0];
-                dp[1] = cost[1];
-                for (int i = 2; i < n; i++)
-                {
-                    dp[i] = Math.Min(dp[i-1], dp[i-2]) + cost[i];
-                }
-                return Math.Min(dp[n - 1],dp[n-2]);
-            }
-            /// <summary>
-            /// https://leetcode.com/problems/coin-change/
-            /// Write a function to compute the FEWEST number of coins that you need to make up that amount.
-            /// </summary>
-            /// <param name="coins"></param>
-            /// <param name="amount"></param>
-            /// <returns></returns>
-            public int CoinChange(int[] coins, int amount)
-            {
-                int[] dp = new int[amount + 1]; // initialize to a value which has all possibilities including 0 amount
-                Array.Sort(coins);
-                Array.Fill(dp, amount+1);
-                dp[0] = 0; // there are zero wasy to make zeo amount
-                for (int i = 0; i <= amount; i++)
-                {
-                    for (int j = 0; j < coins.Length; j++)
-                    {
-                        if (coins[j]<=i)
-                        {
-                            dp[i] = Math.Min(dp[i], dp[i - coins[j]]);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                }
-                return dp[amount] > amount ? -1 : dp[amount]; // for cases dp of amount never got updated
-            }
         }
     }
-}
